@@ -28,7 +28,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   onSelectCategory,
 }) => {
   return (
-    <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+    <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1">
       {VIDEO_CATEGORIES.map((cat) => {
         const isActive = cat.id === selectedCategoryId;
         const icon = CATEGORY_ICONS[cat.id];
@@ -37,10 +37,10 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
           <button
             key={cat.id}
             onClick={() => onSelectCategory(cat.id)}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition cursor-pointer select-none ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition cursor-pointer select-none flex-shrink-0 active:scale-95 ${
               isActive
-                ? 'bg-zinc-100 text-zinc-950 font-semibold shadow-md shadow-white/5'
-                : 'bg-zinc-900/90 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 border border-zinc-800/80'
+                ? 'bg-zinc-100 text-zinc-950 font-semibold shadow-md shadow-white/10'
+                : 'bg-zinc-900/90 text-zinc-400 active:text-zinc-100 active:bg-zinc-800 border border-zinc-800/80'
             }`}
           >
             {icon}
@@ -51,4 +51,3 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
     </div>
   );
 };
-

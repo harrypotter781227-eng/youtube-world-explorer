@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WorldTube</string>
+    <string name="offline_message">No internet connection. Please check your network and tap Retry.</string>
+    <string name="retry">Retry</string>
+</resources>

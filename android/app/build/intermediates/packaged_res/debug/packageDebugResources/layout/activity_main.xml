@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <!-- Pull to Refresh & Main WebView -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_dark" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Top Loading Progress Indicator -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:max="100"
+        android:progressTint="@color/red_accent"
+        android:visibility="gone" />
+
+    <!-- Offline State Error View -->
+    <LinearLayout
+        android:id="@+id/errorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:visibility="gone"
+        android:background="@color/background_dark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📡"
+            android:textSize="56sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/offline_message"
+            android:textAlignment="center"
+            android:textColor="#FFA1A1AA"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/red_accent"
+            android:text="@string/retry"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <!-- Fullscreen Video Container (YouTube Player Fullscreen target) -->
+    <FrameLayout
+        android:id="@+id/fullscreenContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF000000"
+        android:visibility="gone" />
+
+</FrameLayout>

@@ -191,7 +191,7 @@ export default function Home() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6">
         {/* Country Hero Header */}
         <CountryBanner
           country={countryInfo}
@@ -253,7 +253,7 @@ export default function Home() {
             ))}
           </div>
         ) : filteredVideos.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
             {filteredVideos.map((video) => (
               <VideoCard
                 key={video.id + video.title}

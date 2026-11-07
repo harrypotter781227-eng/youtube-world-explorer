@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+color background_dark
+color black
+color red_accent
+color surface_dark
+color white
+id btnRetry
+id errorView
+id fullscreenContainer
+id progressBar
+id rootContainer
+id swipeRefresh
+id webView
+layout activity_main
+string app_name
+string offline_message
+string retry
+style Theme.WorldTube

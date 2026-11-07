@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -15,9 +15,27 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "WorldTube Explorer | Discover Trending YouTube Videos by Country",
   description: "Explore trending YouTube videos, shorts, and culture across countries with instant country teleportation and in-app theater player.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "WorldTube",
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+  themeColor: "#09090b",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
