@@ -23,6 +23,21 @@ interface CountryTemplate {
 }
 
 const COUNTRY_TEMPLATES: Record<string, CountryTemplate> = {
+  MY: {
+    creators: ['Khairul Aming', 'Mechamato / Monsta', 'Syahmi Sazli', 'Alieff Irfan', 'Aisar Khaled', 'Namewee', 'Sinar TV', 'BAM Malaysia'],
+    trendingHeadlines: [
+      { title: 'Khairul Aming - Resipi 5 Minit Sambal Nyet Berapi #shorts', categoryId: '26', isShort: true },
+      { title: 'Lee Zii Jia Smash Padu! Highlights Terkini Badminton All England', categoryId: '17', isShort: false },
+      { title: 'Lagu Raya Viral 2026 - Muzik Video Rasmi 4K', categoryId: '10', isShort: false },
+      { title: 'Mechamato Movie 2 - Teaser Rasmi Episod Baru', categoryId: '1', isShort: false },
+      { title: 'Food Hunting Jalan Alor & Pasar Seni: Makan Sampai Kenyang! 🍜', categoryId: '26', isShort: false },
+      { title: 'Syahmi Sazli - Drama Spontan Episod Terpaling Kelakar', categoryId: '24', isShort: false },
+      { title: 'Tips Roti Canai Crispy Macam Mamak Original #shorts', categoryId: '26', isShort: true },
+      { title: 'MPL Malaysia Grand Finals - Match Point Penentuan! 🏆', categoryId: '20', isShort: false },
+      { title: 'Kereta Terbang Buatan Malaysia Akhirnya Diuji di KL', categoryId: '28', isShort: false },
+      { title: '1 Minit Pusing Menara Merdeka 118 Kuala Lumpur #shorts', categoryId: '26', isShort: true },
+    ],
+  },
   US: {
     creators: ['MrBeast', 'MKBHD', 'Veritasium', 'First We Feast', 'Theo - t3.gg', 'Lex Fridman', 'Mark Rober'],
     trendingHeadlines: [
