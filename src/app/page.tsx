@@ -10,6 +10,7 @@ import { VideoPlayerModal } from '@/components/VideoPlayerModal';
 import { CountryModal } from '@/components/CountryModal';
 import { BookmarksDrawer } from '@/components/BookmarksDrawer';
 import { InfoModal } from '@/components/InfoModal';
+import { GeminiCountryPulseModal } from '@/components/GeminiCountryPulseModal';
 import { COUNTRIES, getCountryByCode } from '@/data/countries';
 import { YouTubeVideo, CountryInfo, DurationFilter, VideosApiResponse } from '@/types/youtube';
 import { Loader2, AlertCircle, RefreshCw, Sparkles } from 'lucide-react';
@@ -35,6 +36,7 @@ export default function Home() {
   const [isCountryPickerOpen, setIsCountryPickerOpen] = useState<boolean>(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState<boolean>(false);
   const [isInfoOpen, setIsInfoOpen] = useState<boolean>(false);
+  const [isCountryPulseOpen, setIsCountryPulseOpen] = useState<boolean>(false);
 
   // Bookmarks
   const [bookmarks, setBookmarks] = useState<YouTubeVideo[]>([]);
@@ -188,6 +190,7 @@ export default function Home() {
         bookmarksCount={bookmarks.length}
         isMock={isMock}
         onOpenInfo={() => setIsInfoOpen(true)}
+        onOpenPulse={() => setIsCountryPulseOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -197,6 +200,7 @@ export default function Home() {
           country={countryInfo}
           onOpenPicker={() => setIsCountryPickerOpen(true)}
           onRandomCountry={handleRandomCountry}
+          onOpenPulse={() => setIsCountryPulseOpen(true)}
           totalVideos={filteredVideos.length}
           categoryLabel={categoryId === '0' ? 'All' : 'Filtered'}
         />
@@ -359,6 +363,14 @@ export default function Home() {
         isOpen={isInfoOpen}
         onClose={() => setIsInfoOpen(false)}
         isMock={isMock}
+      />
+
+      <GeminiCountryPulseModal
+        isOpen={isCountryPulseOpen}
+        onClose={() => setIsCountryPulseOpen(false)}
+        country={countryInfo}
+        videos={videos}
+        onTeleportRandom={handleRandomCountry}
       />
     </div>
   );

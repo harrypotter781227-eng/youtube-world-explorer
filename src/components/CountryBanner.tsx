@@ -2,12 +2,13 @@
 
 import React from 'react';
 import { CountryInfo } from '@/types/youtube';
-import { Globe, MapPin, Shuffle, TrendingUp } from 'lucide-react';
+import { Globe, MapPin, Shuffle, TrendingUp, Sparkles } from 'lucide-react';
 
 interface CountryBannerProps {
   country: CountryInfo;
   onOpenPicker: () => void;
   onRandomCountry: () => void;
+  onOpenPulse: () => void;
   totalVideos: number;
   categoryLabel: string;
 }
@@ -16,6 +17,7 @@ export const CountryBanner: React.FC<CountryBannerProps> = ({
   country,
   onOpenPicker,
   onRandomCountry,
+  onOpenPulse,
   totalVideos,
   categoryLabel,
 }) => {
@@ -74,11 +76,20 @@ export const CountryBanner: React.FC<CountryBannerProps> = ({
           </div>
         </div>
 
-        {/* Right: Teleport & Explorer Buttons */}
-        <div className="flex items-center gap-2 w-full md:w-auto">
+        {/* Right: Teleport, Country Pulse & Explorer Buttons */}
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 w-full md:w-auto">
+          <button
+            onClick={onOpenPulse}
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 active:from-violet-500 active:to-fuchsia-500 text-white font-semibold text-xs sm:text-sm shadow-md shadow-purple-600/25 transition cursor-pointer"
+            title="Analyze National Zeitgeist with Gemini"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Country Pulse</span>
+          </button>
+
           <button
             onClick={onOpenPicker}
-            className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-zinc-800 active:bg-zinc-700 text-zinc-100 font-medium text-xs sm:text-sm border border-zinc-700 transition"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-zinc-800 active:bg-zinc-700 text-zinc-100 font-medium text-xs sm:text-sm border border-zinc-700 transition"
           >
             <Globe className="w-3.5 h-3.5 text-zinc-400" />
             <span>Select Country</span>
@@ -86,7 +97,7 @@ export const CountryBanner: React.FC<CountryBannerProps> = ({
 
           <button
             onClick={onRandomCountry}
-            className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 active:from-red-500 active:to-rose-500 text-white font-semibold text-xs sm:text-sm shadow-md shadow-red-600/20 transition cursor-pointer"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 active:from-red-500 active:to-rose-500 text-white font-semibold text-xs sm:text-sm shadow-md shadow-red-600/20 transition cursor-pointer"
           >
             <Shuffle className="w-3.5 h-3.5" />
             <span>Teleport</span>

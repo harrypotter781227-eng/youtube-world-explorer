@@ -12,6 +12,7 @@ interface HeaderProps {
   bookmarksCount: number;
   isMock: boolean;
   onOpenInfo: () => void;
+  onOpenPulse?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -22,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   bookmarksCount,
   isMock,
   onOpenInfo,
+  onOpenPulse,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80 px-3 sm:px-6 py-2.5 transition-colors">
@@ -55,6 +57,18 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="max-w-[80px] xs:max-w-[110px] sm:max-w-[160px] truncate">{currentCountry.name}</span>
             <Globe className="w-3.5 h-3.5 text-zinc-400" />
           </button>
+
+          {/* Country Pulse AI */}
+          {onOpenPulse && (
+            <button
+              onClick={onOpenPulse}
+              className="flex items-center justify-center w-8 h-8 sm:w-auto sm:px-3 sm:py-1.5 rounded-full bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 hover:from-violet-600/30 hover:to-fuchsia-600/30 active:from-violet-600/40 text-violet-300 border border-violet-500/30 transition text-xs sm:text-sm font-medium"
+              title="Gemini Country Pulse"
+            >
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-violet-400" />
+              <span className="hidden lg:inline ml-1.5 font-semibold">Pulse</span>
+            </button>
+          )}
 
           {/* Random / Teleport Country */}
           <button

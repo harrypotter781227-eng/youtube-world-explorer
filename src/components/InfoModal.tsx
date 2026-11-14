@@ -71,6 +71,19 @@ export const InfoModal: React.FC<InfoModalProps> = ({
 
         {/* Feature Highlights */}
         <div className="space-y-3 text-xs text-zinc-300">
+          <div className="flex items-start gap-3 p-3 rounded-xl bg-zinc-950/60 border border-violet-500/30">
+            <Sparkles className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold text-white block">Gemini AI Cultural Lens &amp; Pulse</span>
+              <p className="text-zinc-400 mt-0.5">
+                Powered by Google Gemini (<code>gemini-4-hydrogen</code>) via <code>@google/genai</code>. Translates foreign titles, unpacks regional slang, explains why videos are trending, and synthesizes national zeitgeist.
+              </p>
+              <pre className="mt-1.5 p-2 bg-black/60 rounded-lg font-mono text-[11px] text-zinc-300 select-all">
+                GEMINI_API_KEY=your_gemini_api_key_here
+              </pre>
+            </div>
+          </div>
+
           <div className="flex items-start gap-3 p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
             <Key className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
             <div>

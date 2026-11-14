@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { YouTubeVideo } from '@/types/youtube';
 import { formatViewCount, formatRelativeTime } from '@/lib/youtube';
+import { GeminiVideoInsights } from '@/components/GeminiVideoInsights';
 import {
   X,
   Bookmark,
@@ -175,6 +176,9 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                 </div>
               </div>
             </div>
+
+            {/* Gemini Cultural Lens Explainer */}
+            <GeminiVideoInsights video={video} />
 
             {/* Description Accordion */}
             {video.description && (
