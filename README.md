@@ -32,6 +32,19 @@ An interactive, modern full-stack web application built with **Next.js (App Rout
 
 ---
 
+## ⚡ Deploy to Vercel
+
+Deploy your own instance of WorldTube Explorer to Vercel with one click:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fharrypotter781227-eng%2Fyoutube-world-explorer&env=GEMINI_API_KEY,YOUTUBE_API_KEY&envDescription=Add%20your%20Google%20Gemini%20API%20key%20and%20optional%20YouTube%20API%20key&project-name=worldtube-explorer&repository-name=youtube-world-explorer)
+
+### Environment Variables on Vercel
+In your Vercel Project Settings under **Environment Variables**, configure:
+- `GEMINI_API_KEY`: Your Google Gemini API key from [Google AI Studio](https://aistudio.google.com/)
+- `YOUTUBE_API_KEY`: *(Optional)* YouTube Data API v3 key (runs in Demo Mock mode if omitted)
+
+---
+
 ## 🚀 Getting Started
 
 ### 1. Run the Development Server
