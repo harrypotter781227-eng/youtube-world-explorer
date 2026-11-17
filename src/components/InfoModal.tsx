@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, Key, ShieldCheck, Database, Globe2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, Key, ShieldCheck, Database, Globe2, Sparkles, CheckCircle2, Bot } from 'lucide-react';
 
 interface InfoModalProps {
   isOpen: boolean;
@@ -100,6 +100,17 @@ export const InfoModal: React.FC<InfoModalProps> = ({
               <span className="font-semibold text-white block">Local Privacy</span>
               <p className="text-zinc-400 mt-0.5">
                 Bookmarks and favorite country preferences remain 100% inside your browser localStorage.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3 p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
+            <Bot className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold text-white block">AI Usage — Your Choice</span>
+              <p className="text-zinc-400 mt-0.5">
+                Use the <strong className="text-emerald-300">AI toggle</strong> in the header to turn AI features on or off at any time. When AI is enabled, the AI Trend Insights panel analyzes your trending feed
+                <strong className="text-emerald-300"> entirely on-device in your browser</strong> — no video data, searches, or preferences are ever sent to an external AI service. Turning AI off hides and disables all AI features instantly; your preference is saved in localStorage.
               </p>
             </div>
           </div>

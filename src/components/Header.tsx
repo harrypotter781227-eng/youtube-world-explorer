@@ -3,6 +3,7 @@
 import React from 'react';
 import { Globe, Shuffle, Bookmark, Info, Sparkles } from 'lucide-react';
 import { CountryInfo } from '@/types/youtube';
+import { AiToggle } from '@/components/AiToggle';
 
 interface HeaderProps {
   currentCountry: CountryInfo;
@@ -12,6 +13,8 @@ interface HeaderProps {
   bookmarksCount: number;
   isMock: boolean;
   onOpenInfo: () => void;
+  aiEnabled: boolean;
+  onToggleAi: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -22,6 +25,8 @@ export const Header: React.FC<HeaderProps> = ({
   bookmarksCount,
   isMock,
   onOpenInfo,
+  aiEnabled,
+  onToggleAi,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80 px-3 sm:px-6 py-2.5 transition-colors">
@@ -80,6 +85,9 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             )}
           </button>
+
+          {/* AI Usage Toggle - lets the user turn AI features on or off */}
+          <AiToggle aiEnabled={aiEnabled} onToggle={onToggleAi} />
 
           {/* Mode / Info Pill */}
           <button

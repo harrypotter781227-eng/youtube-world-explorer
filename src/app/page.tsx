@@ -10,12 +10,15 @@ import { VideoPlayerModal } from '@/components/VideoPlayerModal';
 import { CountryModal } from '@/components/CountryModal';
 import { BookmarksDrawer } from '@/components/BookmarksDrawer';
 import { InfoModal } from '@/components/InfoModal';
+import { AiInsightsPanel } from '@/components/AiInsightsPanel';
 import { COUNTRIES, getCountryByCode } from '@/data/countries';
 import { YouTubeVideo, CountryInfo, DurationFilter, VideosApiResponse } from '@/types/youtube';
 import { Loader2, AlertCircle, RefreshCw, Sparkles } from 'lucide-react';
 
 const BOOKMARKS_STORAGE_KEY = 'worldtube_saved_videos';
 const LAST_COUNTRY_STORAGE_KEY = 'worldtube_last_country';
+const AI_ENABLED_STORAGE_KEY = 'worldtube_ai_enabled';
+const AI_ENABLED_DEFAULT = true;
 
 export default function Home() {
   const [countryCode, setCountryCode] = useState<string>('US');
@@ -35,6 +38,19 @@ export default function Home() {
   const [isCountryPickerOpen, setIsCountryPickerOpen] = useState<boolean>(false);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState<boolean>(false);
   const [isInfoOpen, setIsInfoOpen] = useState<boolean>(false);
+
+  // AI usage toggle - lets the user turn the use of AI on or off.
+  // Persisted in localStorage; when off, AI features are hidden and never computed.
+  const [aiEnabled, setAiEnabled] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return AI_ENABLED_DEFAULT;
+    try {
+      const saved = localStorage.getItem(AI_ENABLED_STORAGE_KEY);
+      if (saved === null) return AI_ENABLED_DEFAULT;
+      return saved === 'true';
+    } catch {
+      return AI_ENABLED_DEFAULT;
+    }
+  });
 
   // Bookmarks
   const [bookmarks, setBookmarks] = useState<YouTubeVideo[]>([]);
@@ -56,6 +72,26 @@ export default function Home() {
       // ignore localStorage errors
     }
   }, []);
+
+  // Persist AI usage preference and keep it in sync across browser tabs
+  useEffect(() => {
+    try {
+      localStorage.setItem(AI_ENABLED_STORAGE_KEY, String(aiEnabled));
+    } catch {
+      // ignore localStorage errors
+    }
+  }, [aiEnabled]);
+
+  useEffect(() => {
+    const syncAiSetting = (event: StorageEvent) => {
+      if (event.key !== AI_ENABLED_STORAGE_KEY) return;
+      setAiEnabled(event.newValue !== 'false');
+    };
+    window.addEventListener('storage', syncAiSetting);
+    return () => window.removeEventListener('storage', syncAiSetting);
+  }, []);
+
+  const handleToggleAi = () => setAiEnabled((prev) => !prev);
 
   // Fetch videos for country and category
   const loadVideos = useCallback(async (code: string, catId: string) => {
@@ -188,6 +224,8 @@ export default function Home() {
         bookmarksCount={bookmarks.length}
         isMock={isMock}
         onOpenInfo={() => setIsInfoOpen(true)}
+        aiEnabled={aiEnabled}
+        onToggleAi={handleToggleAi}
       />
 
       {/* Main Content Area */}
@@ -236,6 +274,11 @@ export default function Home() {
           onChangeSort={(val) => setSortBy(val)}
           resultsCount={filteredVideos.length}
         />
+
+        {/* AI Trend Insights - only shown while AI usage is enabled */}
+        {aiEnabled && (
+          <AiInsightsPanel videos={videos} country={countryInfo} />
+        )}
 
         {/* Videos Grid / States */}
         {isLoading ? (
