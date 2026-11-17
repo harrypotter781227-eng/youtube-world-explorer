@@ -12,6 +12,7 @@ An interactive, modern full-stack web application built with **Next.js (App Rout
 - **⏱️ Duration & Shorts Filter**: Switch seamlessly between All Videos, Standard Long-form, or YouTube Shorts (< 60s).
 - **🎬 In-App Theater Player**: Watch any video directly inside the app with YouTube IFrame Player, views, likes, comments, channel info, and tags without losing your place.
 - **⭐️ Local Bookmarks**: Save your favorite discoveries with 1-click bookmarks, persisted in your browser's `localStorage`.
+- **🤖 AI Usage Toggle (On/Off)**: A switch in the header lets you turn the use of AI on or off at any time. When enabled, the **AI Trend Insights** panel analyzes the current trending feed and produces a summary, top creators, and key observations — computed **entirely on-device** in your browser, with no data leaving your machine. Turning AI off instantly hides and disables all AI features, and your choice is remembered in `localStorage`.
 - **🚀 Server-side Caching & Mock Fallback**: 
   - Automatically caches YouTube API responses (1-hour TTL) to stay well within Google's free 10,000 units/day quota.
   - Runs in **Demo / Mock Mode** out of the box with realistic country feeds if no API key is configured.
